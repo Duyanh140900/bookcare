@@ -7,6 +7,8 @@ import {
   displayCRUD,
 } from "../controllers/homeController";
 
+import {handleLoginUser} from "../controllers/userController"
+
 let router = express.Router();
 
 let initWebRoutes = (app) => {
@@ -15,6 +17,9 @@ let initWebRoutes = (app) => {
   router.get("/crud", getCRUD);
   router.post("/post-crud", postCRUD);
   router.get("/get-crud", displayCRUD);
+
+  //rest api
+  router.get("/api/login", handleLoginUser);
   return app.use("/", router);
 };
 
