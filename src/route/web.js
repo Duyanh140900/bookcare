@@ -7,7 +7,12 @@ import {
   displayCRUD,
 } from "../controllers/homeController";
 
-import {handleLoginUser} from "../controllers/userController"
+import {
+  handleLoginUser,
+  getUser,
+  createUser,
+  updateUser,
+} from "../controllers/useControler";
 
 let router = express.Router();
 
@@ -16,10 +21,13 @@ let initWebRoutes = (app) => {
   router.get("/about", getAboutPage);
   router.get("/crud", getCRUD);
   router.post("/post-crud", postCRUD);
-  router.get("/get-crud", displayCRUD);
+  router.post("/get-crud", displayCRUD);
 
   //rest api
-  router.get("/api/login", handleLoginUser);
+  router.post("/api/login", handleLoginUser);
+  router.get("/api/get-user", getUser);
+  router.post("/api/create-user", createUser);
+  router.post("/api/update-user", updateUser);
   return app.use("/", router);
 };
 
